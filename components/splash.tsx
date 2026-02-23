@@ -9,7 +9,7 @@ export default function Splash({ heading = "You won!", type = "" }) {
     <div className={`${styles.splash} ${type === "won" && styles.win}`}>
       <div>
         <h1>{heading}</h1>
-        <button className={styles.button} onClick={startGame}>
+        <button className={styles.button}  onTouchEnd={startGame} onClick={startGame}>
           Play again
         </button>
       </div>

@@ -82,24 +82,28 @@ export default function GameProvider({ children }: PropsWithChildren) {
     }
 
     const { tiles, board } = gameState;
+    const size = tileCountPerDimension;
 
-    const maxIndex = tileCountPerDimension - 1;
-    for (let x = 0; x < maxIndex; x += 1) {
-      for (let y = 0; y < maxIndex; y += 1) {
-        if (
-          isNil(gameState.board[x][y]) ||
-          isNil(gameState.board[x + 1][y]) ||
-          isNil(gameState.board[x][y + 1])
-        ) {
-          return;
+    for (let x = 0; x < size; x++) {
+      for (let y = 0; y < size; y++) {
+        const currentTileId = board[x][y];
+        if (isNil(currentTileId)) return;
+        const currentValue = tiles[currentTileId].value;
+
+        // 2. Check neighbor to the right (if not on the last column)
+        if (x < size - 1) {
+          const rightTileId = board[x + 1][y];
+          if (isNil(rightTileId) || currentValue === tiles[rightTileId].value) {
+            return;
+          }
         }
 
-        if (tiles[board[x][y]].value === tiles[board[x + 1][y]].value) {
-          return;
-        }
-
-        if (tiles[board[x][y]].value === tiles[board[x][y + 1]].value) {
-          return;
+        // 3. Check neighbor below (if not on the last row)
+        if (y < size - 1) {
+          const bottomTileId = board[x][y + 1];
+          if (isNil(bottomTileId) || currentValue === tiles[bottomTileId].value) {
+            return;
+          }
         }
       }
     }

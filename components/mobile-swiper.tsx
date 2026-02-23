@@ -41,10 +41,11 @@ export default function MobileSwiper({ children, onSwipe }: MobileSwiperProps) {
       const deltaX = endX - startX;
       const deltaY = endY - startY;
 
-      onSwipe({ deltaX, deltaY });
+      const isSwipe = Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10;
 
-      setStartX(0);
-      setStartY(0);
+      if (isSwipe) {
+        onSwipe({ deltaX, deltaY });
+      }
     },
     [startX, startY, onSwipe],
   );
