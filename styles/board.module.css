@@ -3,6 +3,10 @@
   width: calc(var(--pixel-size) * 8 * 4 + var(--pixel-size) * 5);
 }
 
+:global([data-share-mode="true"]) .board {
+  margin: 0 auto;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;

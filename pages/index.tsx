@@ -6,7 +6,7 @@ import styles from "@/styles/index.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.twenty48}>
+    <div className={styles.twenty48} data-game-capture="true">
       <Head>
         <title>Play 12288</title>
         <meta
