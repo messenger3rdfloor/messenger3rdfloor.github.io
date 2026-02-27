@@ -4,6 +4,7 @@ import {
   useCallback,
   useEffect,
   useReducer,
+  useState,
 } from "react";
 import { isNil, throttle } from "lodash";
 import {
@@ -18,6 +19,7 @@ type MoveDirection = "move_up" | "move_down" | "move_left" | "move_right";
 
 export const GameContext = createContext({
   score: 0,
+  highScore: 0,
   status: "ongoing",
   moveTiles: (_: MoveDirection) => {},
   getTiles: () => [] as Tile[],
@@ -26,6 +28,8 @@ export const GameContext = createContext({
 
 export default function GameProvider({ children }: PropsWithChildren) {
   const [gameState, dispatch] = useReducer(gameReducer, initialState);
+  const [highScore, setHighScore] = useState(0);
+  const highScoreStorageKey = "12288_high_score";
 
   const getEmptyCells = () => {
     const results: [number, number][] = [];
@@ -126,10 +130,37 @@ export default function GameProvider({ children }: PropsWithChildren) {
     }
   }, [gameState.hasChanged]);
 
+  useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(highScoreStorageKey);
+      const parsed = stored ? Number(stored) : 0;
+      if (!Number.isNaN(parsed) && parsed > 0) {
+        setHighScore(parsed);
+      }
+    } catch {
+      // Ignore storage errors (privacy mode, disabled storage, etc.)
+    }
+  }, []);
+
+  useEffect(() => {
+    setHighScore((current) => {
+      const next = Math.max(current, gameState.score);
+      if (next !== current) {
+        try {
+          window.localStorage.setItem(highScoreStorageKey, String(next));
+        } catch {
+          // Ignore storage errors (privacy mode, disabled storage, etc.)
+        }
+      }
+      return next;
+    });
+  }, [gameState.score]);
+
   return (
     <GameContext.Provider
       value={{
         score: gameState.score,
+        highScore,
         status: gameState.status,
         getTiles,
         moveTiles,

@@ -3,12 +3,18 @@ import styles from "@/styles/score.module.css";
 import { useContext } from "react";
 
 export default function Score() {
-  const { score } = useContext(GameContext);
+  const { score, highScore } = useContext(GameContext);
 
   return (
     <div className={styles.score}>
-      Score
-      <div>{score}</div>
+      <div className={styles.block}>
+        Score
+        <div>{score}</div>
+      </div>
+      <div className={styles.block}>
+        Best
+        <div>{highScore}</div>
+      </div>
     </div>
   );
 }
