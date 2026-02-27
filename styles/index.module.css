@@ -60,3 +60,30 @@
     margin-right: calc(var(--pixel-size) * 0);
   }
 }
+
+.twenty48[data-share-mode="true"] {
+  max-width: none;
+  width: fit-content;
+  padding: calc(var(--pixel-size) * 3);
+}
+
+.twenty48[data-share-mode="true"] > header {
+  justify-content: space-between;
+  gap: calc(var(--pixel-size) * 3);
+  margin: 0 0 calc(var(--pixel-size) * 3) 0;
+}
+
+.twenty48[data-share-mode="true"] > header > * {
+  flex: 0 0 auto;
+}
+
+.twenty48[data-share-mode="true"] > header > h1 {
+  flex: 1;
+  margin: 0;
+  font-size: calc(var(--pixel-size) * 9.5);
+  line-height: calc(var(--pixel-size) * 9.5);
+}
+
+.twenty48[data-share-mode="true"] > footer {
+  display: none;
+}

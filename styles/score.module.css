@@ -36,3 +36,20 @@
     font-size: calc(var(--pixel-size) * 3.5);
   }
 }
+
+:global([data-share-mode="true"]) .score {
+  margin-bottom: 0;
+  gap: calc(var(--pixel-size) * 2);
+  font-size: calc(var(--pixel-size) * 2);
+}
+
+:global([data-share-mode="true"]) .score > .block {
+  border-radius: calc(var(--pixel-size) * 0.9);
+  padding: calc(var(--pixel-size) * 2) calc(var(--pixel-size) * 2.5);
+  min-width: calc(var(--pixel-size) * 12);
+  line-height: calc(var(--pixel-size) * 3.4);
+}
+
+:global([data-share-mode="true"]) .score > .block > div {
+  font-size: calc(var(--pixel-size) * 3);
+}

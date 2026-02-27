@@ -64,9 +64,9 @@ export default function Board() {
   };
 
   const renderTiles = () => {
-    return getTiles().map((tile: TileModel) => (
-      <Tile key={`${tile.id}`} {...tile} />
-    ));
+    return getTiles()
+      .filter(Boolean)
+      .map((tile: TileModel) => <Tile key={`${tile.id}`} {...tile} />);
   };
 
   useEffect(() => {

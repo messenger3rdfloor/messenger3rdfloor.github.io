@@ -50,15 +50,29 @@ export default function MobileSwiper({ children, onSwipe }: MobileSwiperProps) {
     [startX, startY, onSwipe],
   );
 
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (!wrapperRef.current?.contains(e.target as Node)) {
+      return;
+    }
+
+    e.preventDefault();
+  }, []);
+
   useEffect(() => {
     window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
     window.addEventListener("touchend", handleTouchEnd, { passive: false });
 
     return () => {
       window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [handleTouchStart, handleTouchEnd]);
+  }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
-  return <div ref={wrapperRef}>{children}</div>;
+  return (
+    <div ref={wrapperRef} style={{ touchAction: "none" }}>
+      {children}
+    </div>
+  );
 }
