@@ -22,6 +22,14 @@ export default function Home() {
         />
         <link rel="icon" type="image/png" sizes="32x32" href="favicon32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="favicon16.png" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDHP4J3RSG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)}
+          gtag('js', new Date());
+
+          gtag('config', 'G-GDHP4J3RSG');
+        </script>
       </Head>
       <header>
         <h1>12288</h1>
