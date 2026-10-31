@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <GameProvider>
+      <GoogleAnalytics />
       <Component {...pageProps} />
     </GameProvider>
   );
