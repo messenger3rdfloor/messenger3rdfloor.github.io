@@ -13,8 +13,8 @@ export default function Home() {
           name="description"
           content="2048 game clone using multiples of three instead of two built in NextJS and TypeScript. Including animations."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="icon" href="favicon.ico"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="favicon.ico" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
