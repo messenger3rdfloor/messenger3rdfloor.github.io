@@ -13,22 +13,33 @@ export default function Home() {
           name="description"
           content="2048 game clone using multiples of three instead of two built in NextJS and TypeScript. Including animations."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="icon" href="favicon.ico"/>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="apple-touch-icon.png"
         />
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon16.png"/>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDHP4J3RSG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+
+          gtag('config', 'G-GDHP4J3RSG');
+        </script>
       </Head>
       <header>
         <h1>12288</h1>
-        <Score />
+        <Score/>
       </header>
       <main>
-        <Board />
+        <Board/>
       </main>
       <footer>
         <div>Forked from Matéush 2048 game</div>
